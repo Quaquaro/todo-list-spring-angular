@@ -8,9 +8,9 @@ create table task(
     title varchar not null,
     due_date timestamp with time zone,
     is_done boolean
-)
+);
 
-create table(
- list_id bigint references task_list(id),
- task_id bigint references task(id)
- )
+create table tasklist_task(
+    list_id bigint references task_list(id),
+    task_id bigint references task(id)
+);

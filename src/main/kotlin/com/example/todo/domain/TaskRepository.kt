@@ -4,3 +4,5 @@ import org.springframework.data.repository.*
 
 interface TaskRepository :
         CrudRepository<Task, Long>
+
+
