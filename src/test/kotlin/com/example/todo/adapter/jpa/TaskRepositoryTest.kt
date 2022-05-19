@@ -24,7 +24,7 @@ class TaskRepositoryTest {
 
     @Test
     fun shouldPersistTask() {
-        val date = LocalDateTime.of(2020, 3,23,12,0,0,0).atOffset(ZoneOffset.systemDefault().rules.getOffset(
+        val date = LocalDateTime.of(2020, 4,23,12,0,0,0).atOffset(ZoneOffset.systemDefault().rules.getOffset(
             LocalDateTime.now()))
         val task = Task(
             title = "Streichen",
