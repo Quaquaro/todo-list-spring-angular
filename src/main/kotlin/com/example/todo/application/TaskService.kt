@@ -1,20 +1,19 @@
 package com.example.todo.application
 
-import com.example.todo.domain.Task
-import com.example.todo.domain.TaskListRepository
-import com.example.todo.domain.TaskRepository
-import org.springframework.stereotype.Service
-import org.springframework.transaction.annotation.Transactional
-
+import com.example.todo.domain.*
+import org.springframework.stereotype.*
+import org.springframework.transaction.annotation.*
+import kotlin.NoSuchElementException
 
 @Service
 @Transactional
 class TaskService(
     private val taskRepository:
-            TaskRepository,
+    TaskRepository,
     private val listRepository:
-            TaskListRepository
+    TaskListRepository
 ) {
+
     fun create(
         listId: Long,
         taskDto: TaskDto
@@ -35,10 +34,9 @@ class TaskService(
         return savedTask.id
     }
 
-    fun findById(taskId: Long){
-        val task = taskRepository.findById(taskId)
+    fun findById(taskId: Long) =
+        taskRepository.findById(taskId)
             .map { task -> TaskDto(task) }
-    }
 
     fun update(
         id: Long, taskDto: TaskDto
@@ -56,7 +54,7 @@ class TaskService(
     fun delete(
         listId: Long,
         taskId: Long
-    ){
+    ) {
         taskRepository.findById(taskId)
             .ifPresent { task ->
                 taskRepository.delete(task)
@@ -67,3 +65,4 @@ class TaskService(
             }
     }
 }
+
